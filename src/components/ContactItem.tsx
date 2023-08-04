@@ -10,7 +10,7 @@ const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
   return (
     <>
       <NavLink
-        to={`/contacts/${contact.id}`}
+        to={`/${contact.id}`}
         className={({ isActive, isPending }) =>
           isActive ? "bg-primary text-white" : isPending ? "text-muted" : "text-dark"
         }

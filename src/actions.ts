@@ -3,5 +3,5 @@ import { createNewContact } from "./contacts";
 
 export const addContactAction: ActionFunction = async () => {
   const newContact = createNewContact();
-  return redirect(`/contacts/${newContact.id}`);
+  return redirect(`/${newContact.id}`);
 };

@@ -6,7 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { addContactAction } from "./actions";
-import { contactsListLoader } from "./loaders";
+import ContactInfo from "./routes/ContactInfo";
+import { contactLoader, contactsListLoader } from "./loaders";
 import Root from "./routes/Root";
 
 const rootElement = document.getElementById("root") as HTMLDivElement;
@@ -25,8 +26,9 @@ const router = createBrowserRouter(
         element={<h1>Project start</h1>}
       />
       <Route
-        path="contacts/:id"
-        element={<h1>New contact</h1>}
+        path="/:contactId"
+        element={<ContactInfo />}
+        loader={contactLoader}
       />
     </Route>,
   ),

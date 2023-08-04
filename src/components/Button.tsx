@@ -8,7 +8,7 @@ const Button: React.FC<ButtonProps> = ({ title, ...other }) => {
   return (
     <>
       <button
-        className="btn border bg-white"
+        className="btn border bg-white text-primary"
         {...other}
       >
         {title}
