@@ -14,3 +14,10 @@ export const toggleContactFavoriteAction: ActionFunction = async ({ params }) =>
   updateContacts(newContacts);
   return redirect(`/${contactId}`);
 };
+
+export const deleteContactAction: ActionFunction = async ({ params }) => {
+  const contactId = params.contactId;
+  const newContacts = getContacts().filter((c) => c.id !== contactId);
+  updateContacts(newContacts);
+  return redirect("/");
+};

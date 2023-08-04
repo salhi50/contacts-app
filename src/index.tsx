@@ -6,7 +6,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { addContactAction, toggleContactFavoriteAction } from "./actions";
+import { addContactAction, deleteContactAction, toggleContactFavoriteAction } from "./actions";
 import ContactInfo from "./routes/ContactInfo";
 import { contactLoader, contactsListLoader } from "./loaders";
 import Root from "./routes/Root";
@@ -34,6 +34,11 @@ const router = createBrowserRouter(
       <Route
         path="/:contactId/toggleFavorite"
         action={toggleContactFavoriteAction}
+        loader={async () => redirect("/")}
+      />
+      <Route
+        path="/:contactId/delete"
+        action={deleteContactAction}
         loader={async () => redirect("/")}
       />
     </Route>,

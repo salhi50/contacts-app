@@ -23,12 +23,23 @@ const ContactInfo: React.FC = () => {
       </ul>
       <div className="hstack mt-3 gap-2">
         <Button title="Edit" />
-        <Button title="Delete" />
+        <Form
+          action="delete"
+          method="DELETE"
+        >
+          <Button
+            title="Delete"
+            type="submit"
+          />
+        </Form>
         <Form
           method="PUT"
-          action={`/${contact.id}/toggleFavorite`}
+          action="toggleFavorite"
         >
-          <Button title={contact.isFavorite ? "★" : "☆"} />
+          <Button
+            title={contact.isFavorite ? "★" : "☆"}
+            type="submit"
+          />
         </Form>
       </div>
     </>
