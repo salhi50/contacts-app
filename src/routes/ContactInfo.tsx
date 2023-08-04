@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Form } from "react-router-dom";
 import Button from "../components/Button";
 import { Contact } from "../contacts";
 
@@ -24,7 +24,12 @@ const ContactInfo: React.FC = () => {
       <div className="hstack mt-3 gap-2">
         <Button title="Edit" />
         <Button title="Delete" />
-        <Button title={contact.isFavorite ? "★" : "☆"} />
+        <Form
+          method="PUT"
+          action={`/${contact.id}/toggleFavorite`}
+        >
+          <Button title={contact.isFavorite ? "★" : "☆"} />
+        </Form>
       </div>
     </>
   );

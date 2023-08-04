@@ -2,10 +2,11 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromChildren,
+  redirect,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { addContactAction } from "./actions";
+import { addContactAction, toggleContactFavoriteAction } from "./actions";
 import ContactInfo from "./routes/ContactInfo";
 import { contactLoader, contactsListLoader } from "./loaders";
 import Root from "./routes/Root";
@@ -29,6 +30,11 @@ const router = createBrowserRouter(
         path="/:contactId"
         element={<ContactInfo />}
         loader={contactLoader}
+      />
+      <Route
+        path="/:contactId/toggleFavorite"
+        action={toggleContactFavoriteAction}
+        loader={async () => redirect("/")}
       />
     </Route>,
   ),

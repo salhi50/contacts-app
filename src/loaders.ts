@@ -7,7 +7,7 @@ export const contactsListLoader: LoaderFunction = async () => {
 
 export const contactLoader: LoaderFunction = async ({ params }) => {
   const contactId = params.contactId;
-  const contact = getContacts().find((c) => c.id.toString() === contactId);
+  const contact = getContacts().find((c) => c.id === contactId);
   if (contact) return contact;
   return redirect("/");
 };
