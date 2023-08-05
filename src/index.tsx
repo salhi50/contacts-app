@@ -16,6 +16,8 @@ import ContactInfo from "./routes/ContactInfo";
 import { contactLoader, contactsListLoader } from "./loaders";
 import Root from "./routes/Root";
 import EditContact from "./routes/EditContact";
+import NoSelectedContact from "./components/NoSelectedContact";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const rootElement = document.getElementById("root") as HTMLDivElement;
 const root = ReactDOM.createRoot(rootElement);
@@ -27,10 +29,11 @@ const router = createBrowserRouter(
       element={<Root />}
       loader={contactsListLoader}
       action={addContactAction}
+      errorElement={<ErrorBoundary />}
     >
       <Route
         index
-        element={<h1>Project start</h1>}
+        element={<NoSelectedContact />}
       />
       <Route
         path="/:contactId"
