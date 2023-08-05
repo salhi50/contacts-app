@@ -6,10 +6,16 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { addContactAction, deleteContactAction, toggleContactFavoriteAction } from "./actions";
+import {
+  addContactAction,
+  deleteContactAction,
+  saveContactInfoAction,
+  toggleContactFavoriteAction,
+} from "./actions";
 import ContactInfo from "./routes/ContactInfo";
 import { contactLoader, contactsListLoader } from "./loaders";
 import Root from "./routes/Root";
+import EditContact from "./routes/EditContact";
 
 const rootElement = document.getElementById("root") as HTMLDivElement;
 const root = ReactDOM.createRoot(rootElement);
@@ -39,6 +45,16 @@ const router = createBrowserRouter(
       <Route
         path="/:contactId/delete"
         action={deleteContactAction}
+        loader={async () => redirect("/")}
+      />
+      <Route
+        path="/:contactId/edit"
+        element={<EditContact />}
+        loader={contactLoader}
+      />
+      <Route
+        path="/:contactId/edit/save"
+        action={saveContactInfoAction}
         loader={async () => redirect("/")}
       />
     </Route>,

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, Form } from "react-router-dom";
+import { useLoaderData, Form, Link } from "react-router-dom";
 import Button from "../components/Button";
 import { Contact } from "../contacts";
 
@@ -22,7 +22,9 @@ const ContactInfo: React.FC = () => {
         </li>
       </ul>
       <div className="hstack mt-3 gap-2">
-        <Button title="Edit" />
+        <Link to="edit">
+          <Button title="Edit" />
+        </Link>
         <Form
           action="delete"
           method="DELETE"

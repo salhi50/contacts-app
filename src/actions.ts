@@ -1,5 +1,5 @@
 import { ActionFunction, redirect } from "react-router-dom";
-import { createNewContact, getContacts, updateContacts } from "./contacts";
+import { Contact, createNewContact, getContacts, updateContacts } from "./contacts";
 
 export const addContactAction: ActionFunction = async () => {
   const newContact = createNewContact();
@@ -20,4 +20,17 @@ export const deleteContactAction: ActionFunction = async ({ params }) => {
   const newContacts = getContacts().filter((c) => c.id !== contactId);
   updateContacts(newContacts);
   return redirect("/");
+};
+
+export const saveContactInfoAction: ActionFunction = async ({ params, request }) => {
+  const contactId = params.contactId;
+  const { username, email } = Object.fromEntries(await request.formData()) as Pick<
+    Contact,
+    "username" | "email"
+  >;
+  const newContacts = getContacts().map((c) =>
+    c.id === contactId ? { ...c, username, email } : c,
+  );
+  updateContacts(newContacts);
+  return redirect(`/${contactId}`);
 };
