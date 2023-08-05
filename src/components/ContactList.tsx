@@ -9,7 +9,7 @@ interface ContactListProps {
 const ContactList: React.FC<ContactListProps> = ({ list }) => {
   return list.length === 0 ? (
     <p className="text-muted px-3">
-      <i>No contacts added yet</i>
+      <i>No contacts</i>
     </p>
   ) : (
     <ul className="list-unstyled">

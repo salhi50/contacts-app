@@ -25,3 +25,7 @@ export function createNewContact(): Contact {
   updateContacts(getContacts().concat(newContact));
   return newContact;
 }
+
+export function filterByUsername(username: Contact["username"]): Contact[] {
+  return getContacts().filter((c) => c.username.toLowerCase().includes(username.toLowerCase()));
+}
